@@ -16,5 +16,11 @@ function acessar(){
 var dadoLista = [];
 function salvarUser(){
    let nomeUser = document.getElementById
-   ('nomeUser').value
+   ('nomeUser').value;
+
+   if(nomeUser){
+
+   }else{
+    alert("Favor informe um nome para cadastro");
+   }
 }
