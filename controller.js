@@ -19,7 +19,6 @@ function salvarUser(){
    ('nomeUser').value;
    if(nomeUser){
         dadosLista.push(nomeUser);
-       
    }else{
     alert("Favor informe um nome para cadastro");
    }
