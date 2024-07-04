@@ -17,9 +17,9 @@ var dadoLista = [];
 function salvarUser(){
    let nomeUser = document.getElementById
    ('nomeUser').value;
-
    if(nomeUser){
-
+        dadosLista.push(nomeUser);
+       
    }else{
     alert("Favor informe um nome para cadastro");
    }
