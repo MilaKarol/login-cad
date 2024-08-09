@@ -52,3 +52,7 @@ HTML5
 JavaScript
 
 Bootstrap 5
+
+# Tela do projeto
+
+<img src="img/projeto1.png">
