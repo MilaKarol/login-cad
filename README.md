@@ -55,4 +55,8 @@ Bootstrap 5
 
 # Tela do projeto
 
-<img src="img/projeto1.png">
+<img src="projeto1.png" width=400px>
+
+<img src="projeto2.png" width=400px>
+
+<img src="projeto3.png" width=400px>
