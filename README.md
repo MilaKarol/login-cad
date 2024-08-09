@@ -57,6 +57,4 @@ Bootstrap 5
 
 <img src="projeto1.png" width=400px>
 
-<img src="projeto2.png" width=400px>
-
 <img src="projeto3.png" width=400px>
