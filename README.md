@@ -33,28 +33,18 @@ Cada linha na tabela também tem um botão "Excluir". Ao clicar, o nome correspo
 
 O arquivo controller.js contém as funções que gerenciam as interações do usuário:
 acessar(): Valida o acesso, garantindo que os campos de e-mail e senha sejam preenchidos.
+
 salvarUser(): Salva o nome do usuário no array dadosLista e atualiza a tabela.
+
 criaLista(): Gera a tabela com os nomes cadastrados e insere botões de ação (editar/excluir).
+
 editar(i): Permite editar um nome na lista, carregando o nome selecionado no campo de entrada.
+
 excluir(i): Remove um nome da lista e da tabela.
-Como Usar
-Clonar o Repositório:
 
-Clone o repositório para sua máquina local.
-Abrir o Projeto:
 
-Abra o arquivo index.html em um navegador web.
-Adicionar Nomes:
+# Tecnologias Utilizadas
 
-Insira nomes no campo de entrada e clique em "Salvar".
-Editar ou Excluir Nomes:
-
-Use os botões "Editar" e "Excluir" na tabela para gerenciar os nomes cadastrados.
-Tecnologias Utilizadas
 HTML5
 JavaScript
 Bootstrap 5
-Melhorias Futuras
-Adicionar persistência de dados usando LocalStorage ou uma API backend.
-Implementar validação mais robusta no frontend.
-Adicionar estilos personalizados para melhorar a interface do usuário.
