@@ -14,7 +14,8 @@ Bootstrap: Biblioteca CSS externa para facilitar o uso de componentes visuais co
 
 
 # 1. Interface de Usuário
-A interface da aplicação consiste em um campo de entrada para o nome do usuário e um botão "Salvar". Abaixo do formulário, há uma tabela que exibe todos os nomes de usuários cadastrados, com botões para editar e excluir cada nome.
+A interface da aplicação consiste em um campo de entrada para o nome do usuário e um botão "Salvar".
+ Abaixo do formulário, há uma tabela que exibe todos os nomes de usuários cadastrados, com botões para editar e excluir cada nome.
 
 # 2. Funcionalidades
 Adicionar Usuário:
@@ -24,6 +25,7 @@ O nome é adicionado a um array (dadosLista) e exibido na tabela abaixo.
 Editar Usuário:
 
 Cada linha na tabela tem um botão "Editar". Ao clicar, o nome é carregado no campo de entrada, permitindo que o usuário faça alterações.
+
 Ao salvar novamente, o nome é atualizado na lista.
 Excluir Usuário:
 
@@ -46,5 +48,7 @@ excluir(i): Remove um nome da lista e da tabela.
 # Tecnologias Utilizadas
 
 HTML5
+
 JavaScript
+
 Bootstrap 5
