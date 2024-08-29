@@ -60,6 +60,8 @@ excluir(i): Remove um nome e e-mail da lista e da tabela.
 
 O arquivo controller.js contém as funções que gerenciam as interações do usuário:
 
+# Neste campo mostra a validação de acesso
+
 ````
 
 // Validação de acesso
@@ -80,6 +82,7 @@ function acessar() {
 } 
 
 ````
+# Neste campo mostra como é o armazenamento dos nomes e e-mails
 
 ````
 // Armazenamento de nomes e e-mails
@@ -105,6 +108,7 @@ function salvarUser() {
     }
 } 
 ````
+# Neste campo mostra como foi criada a lista de usuários
 
 ````
 // Criação da lista de usuários
@@ -117,6 +121,7 @@ function criaLista() {
 }
 
 ````
+# Neste campo mostra a validação do E-mail
 
 ````
 
@@ -129,6 +134,7 @@ function editar(i) {
 }
 
 ````
+# Neste campo mostra a exclusão de usuários
 
 ````
 
