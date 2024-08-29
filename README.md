@@ -121,7 +121,7 @@ function criaLista() {
 }
 
 ````
-# Neste campo mostra a validação do E-mail
+# Neste campo mostra a edição de usuários
 
 ````
 
