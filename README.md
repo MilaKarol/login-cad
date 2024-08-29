@@ -60,7 +60,9 @@ excluir(i): Remove um nome e e-mail da lista e da tabela.
 
 O arquivo controller.js contém as funções que gerenciam as interações do usuário:
 
-# Neste campo mostra a validação de acesso
+## Neste campo mostra a validação de acesso
+
+No código, foi implementada uma função para garantir que os campos de e-mail e senha estejam corretamente preenchidos antes de permitir que o usuário prossiga. A função captura os valores dos campos, verifica se ambos estão preenchidos e valida o e-mail, checando a presença do: @ (arroba) e do .(ponto). Se houver algum erro, uma mensagem de alerta é exibida. Caso contrário, uma mensagem de sucesso aparece e o usuário é redirecionado para a página de cadastro.
 
 ````
 
@@ -82,7 +84,9 @@ function acessar() {
 } 
 
 ````
-# Neste campo mostra como é o armazenamento dos nomes e e-mails
+## Armazenamento de nome e e-mail
+
+No código abaixo, foram realizadas alterações para assegurar a validação de um email que deve ser informado pelo usuário, no ato do preenchimento dos campos. Caso o usuário não coleque na email informado, elementos próprios desse tipo de dado, como: @ (arroba) e . (ponto), a validação informará, através de uma mensagem que aparecerá na tela, que o email informado não é válido. 
 
 ````
 // Armazenamento de nomes e e-mails
@@ -108,7 +112,9 @@ function salvarUser() {
     }
 } 
 ````
-# Neste campo mostra como foi criada a lista de usuários
+## Neste campo mostra como foi criada a lista de usuários
+
+A função criaLista() gera e exibe uma tabela com todos os usuários cadastrados. Ela cria o cabeçalho da tabela e, usando um loop, adiciona uma linha para cada usuário, incluindo o nome, o e-mail e botões para "Editar" e "Excluir". Cada botão chama as funções editar() e excluir() com o índice do usuário. A tabela resultante é então exibida no elemento HTML com o ID tabela, atualizando a visualização com as informações mais recentes.
 
 ````
 // Criação da lista de usuários
@@ -121,7 +127,12 @@ function criaLista() {
 }
 
 ````
-# Neste campo mostra a edição de usuários
+## Neste campo mostra a edição de usuários
+
+A função editar(i) é responsável por permitir a edição dos dados de um usuário na tabela.
+A função preenche os campos de entrada nomeUser e emailUser com os valores do usuário selecionado, baseando-se no índice i.
+Após preencher os campos de edição, a função remove a entrada correspondente dos arrays dadosLista e EmailLista usando o método splice().
+Esta função permite ao usuário modificar os dados diretamente na tabela, carregando os valores para os campos de edição e removendo a entrada antiga para ser substituída por uma nova.
 
 ````
 
@@ -134,7 +145,12 @@ function editar(i) {
 }
 
 ````
-# Neste campo mostra a exclusão de usuários
+## Neste campo mostra a exclusão de usuários
+
+A função excluir(i) é responsável por remover um usuário da tabela e das listas de dados.
+A função remove a entrada correspondente do array dadosLista e do array EmailLista usando o método splice().
+Em seguida, remove a linha correspondente da tabela HTML utilizando o método deleteRow().
+Esta função assegura que a entrada do usuário seja excluída tanto da lista de dados quanto da visualização na tabela.
 
 ````
 
