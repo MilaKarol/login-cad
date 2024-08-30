@@ -1,3 +1,19 @@
+// VALIDAR ACESSO EM TELA DE LOGIN
+ 
+function acessar() { // CRIA UMA FUNÇÃO  QUE VALIDA OQUE FOI ESCRITO NOS CAMPOS DE LOGIN
+    let loginEmail = document.getElementById("loginEmail").value;
+    let loginSenha = document.getElementById("loginSenha").value;
+ 
+    if (loginEmail == "" || loginEmail.indexOf("@") == -1 || loginEmail.indexOf(".") == -1) {
+        alert("Por favor, informe um e-mail válido");
+    }else if (!loginEmail || !loginSenha) {
+        alert("Favor preencher todos os campos"); // Mostra Pop-up caso usuário não preencha corretamente os campos de Login.
+    } else {
+        //alert("Campos preenchidos com sucesso");
+        window.location.href = "cadastro.html"; // Ao preencher os campos corretamente ele te direciona a outra página
+    }
+}
+
 // Arrays para armazenar os dados dos usuários
 var dadosLista = [];
 var EmailLista = [];
