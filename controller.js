@@ -1,89 +1,83 @@
-// FUNÇÃO PARA VALIDAÇÃO DE ACESSO
-function acessar() {
-    // OBTÉM O VALOR DO CAMPO DE E-MAIL
-    let loginEmail = document.getElementById('loginEmail').value;
-    // OBTÉM O VALOR DO CAMPO DE SENHA 
-    let loginSenha = document.getElementById('loginSenha').value;
-
-    // VERIFICA SE AMBOS OS CAMPOS FORAM PREENCHIDOS 
-    if (!loginEmail || !loginSenha) {
-        // EXIBE UMA MENSAGEM DE ALERTA SE ALGUM CAMPO ESTIVER VAZIO 
-        alert("Favor preencher todos os campos");
-    }else if(document.forms[0].email.value == "" ||
-        document.forms[0].email.value.indexOf('@') == -1 ||
-        document.forms[0].email.value.indexOf('.') == -1){
-            alert("Favor preencher seu Email corretamente!");
-    } else {    
-        // EXIBE UMA MENSAGEM DE SUCESSO SE AMBOS OS CAMPOS FORAM PREENCHIDOS
-        alert("Campos preenchidos com sucesso");
-        // REDIRECIONA PARA A PÁGINA 'cadastro.html'
-        window.location.href = 'cadastro.html';
-    }
-}
-
-// FUNÇÃO PARA ARMAZENAMENTO DE NOMES EM ARRAY
+// Arrays para armazenar os dados dos usuários
 var dadosLista = [];
 var EmailLista = [];
+var cpfLista = [];
 
+// Função que adiciona máscara ao CPF conforme o usuário digita
+document.getElementById('cpfUser').addEventListener('input', function (e) {
+    let cpf = e.target.value;
+    
+    // Remove tudo o que não for dígito
+    cpf = cpf.replace(/\D/g, "");
+    
+    // Adiciona a formatação do CPF (###.###.###-##)
+    if (cpf.length <= 11) {
+        cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+        cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+        cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+    }
+
+    e.target.value = cpf; // Atualiza o valor do campo com o CPF formatado
+});
+
+// Função para salvar um usuário
 function salvarUser() {
-    // OBTÉM O VALOR DO CAMPO DE NOME DE USUÁRIO 
     let nomeUser = document.getElementById('nomeUser').value;
     let emailUser = document.getElementById('emailUser').value;
+    let cpfUser = document.getElementById('cpfUser').value;
 
-    // VERIFICAR SE O CAMPO DE NOME DO USUÁRIO FOI PREENCHIDO 
-    if ( document.forms[0].emailcad.value == "" ||
-        document.forms[0].emailcad.value.indexOf('@') == -1 ||
-        document.forms[0].emailcad.value.indexOf('.') == -1) {
-            alert("Favor informe seu Email corretamente!");
-       
-    }else if(nomeUser){
-         // ADICIONAR O NOME DO USUÁRIO AO ARRAY 'dadosLista'
-         dadosLista.push(nomeUser);
-         EmailLista.push(emailUser);
-         // CRIAR A LISTA DE USUÁRIOS NA TABELA
-         criaLista();
-         // LIMPAR O CAMPO DE NOME DO USUÁRIO APÓS SALVAR
-         document.getElementById('nomeUser').value = "";
-         document.getElementById('emailUser').value = "";
-           
+    // Verifica se o e-mail é válido
+    if (emailUser === "" || emailUser.indexOf('@') === -1 || emailUser.indexOf('.') === -1) {
+        alert("Favor informe seu E-mail corretamente!");
+    } else if (cpfUser === "" || cpfUser.length !== 14) { // O CPF formatado terá 14 caracteres
+        alert("Favor informe um CPF válido!");
+    } else if (nomeUser) {
+        // Adiciona os dados aos arrays
+        dadosLista.push(nomeUser);
+        EmailLista.push(emailUser);
+        cpfLista.push(cpfUser);
+
+        // Atualiza a lista
+        criaLista();
+
+        // Limpa os campos após salvar
+        document.getElementById('nomeUser').value = "";
+        document.getElementById('emailUser').value = "";
+        document.getElementById('cpfUser').value = "";
     } else {
-        // EXIBE UMA MENSAGEM DE ALERTA SE O CAMPO DE NOME ESTIVER VAZIO
         alert("Favor informe um nome para cadastro");
     }
 }
 
-
-
-// FUNÇÃO QUE CRIA LISTA DE USUÁRIOS
+// Função que cria a lista de usuários na tabela
 function criaLista() {
-    // INICIAE A TABELA COM O CABEÇALHO 
-    let tabela = "<tr><th>Nome Usuário</th><th>Email</th><th>Ações</th></tr>";
-    
-    // PERCORRE O ARRAY 'dadosLista' E ADICIONA CADA NOME COMO UMA NOVA LINHA NA TABELA 
+    let tabela = "<tr><th>Nome Usuário</th><th>Email</th><th>CPF</th><th>Ações</th></tr>";
+
     for (let i = 0; i < dadosLista.length; i++) {
-        tabela += "<tr><td>" + dadosLista[i] + "</td><td>" + EmailLista[i] + "</td><td><button type='button' onclick='editar(" + (i + 1) + ")'>Editar</button><button type='button' onclick='excluir(" + (i + 1) + ")'>Excluir</button></td></tr>";
-    
-    
-    // ATUALIZA O CONTEÚDO DO ELEMENTO HTML COM ID 'tabela' COM A NOVA TABELA
-    document.getElementById('tabela').innerHTML = tabela;
+        tabela += "<tr><td>" + dadosLista[i] + "</td><td>" + EmailLista[i] + "</td><td>" + cpfLista[i] + "</td><td><button type='button' onclick='editar(" + i + ")'>Editar</button> <button type='button' onclick='excluir(" + i + ")'>Excluir</button></td></tr>";
     }
+
+    document.querySelector("#tabela tbody").innerHTML = tabela;
 }
 
-    // FUNÇÃO QUE EDITA NOMES NA LISTA
+// Função para editar um usuário
 function editar(i) {
-    // PREENCHE O CAMPO DE NOME DO USUÁRIO COM O VALOR SDA LINHA SELECIONAR
-    document.getElementById('nomeUser').value = dadosLista[(i - 1)];
-    document.getElementById('emailUser').value = EmailLista[(i - 1)];
-    // REMOVE O NOME SELECIONADOR DO ARRAY 'dadosLista'
-    dadosLista.splice(i - 1, 1);
-    EmailLista.splice(i - 1, 1);
+    document.getElementById('nomeUser').value = dadosLista[i];
+    document.getElementById('emailUser').value = EmailLista[i];
+    document.getElementById('cpfUser').value = cpfLista[i];
+
+    // Remove o usuário da lista para ser atualizado
+    dadosLista.splice(i, 1);
+    EmailLista.splice(i, 1);
+    cpfLista.splice(i, 1);
+
+    criaLista();
 }
 
-// FUNÇÃO PARA EXCLUIR O NOME DA LISTA
+// Função para excluir um usuário
 function excluir(i) {
-    // REMOVE O NOME SELECIONADO DO ARRAY 'dadosLista' COM BASE NO ÍNDICE 
-    dadosLista.splice(i - 1, 1);
-    EmailLista.splice(i - 1, 1);
-    // REMOVE A LINHA CORRESPONDENTE DA TABELA
-    document.getElementById('tabela').deleteRow(i);
+    dadosLista.splice(i, 1);
+    EmailLista.splice(i, 1);
+    cpfLista.splice(i, 1);
+    criaLista();
 }
