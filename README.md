@@ -197,8 +197,8 @@ Bootstrap 5
 
 # Tela do projeto 🏞️
 
-<img src="CAP3.png" width=400px>
+<img src="cap0.png" width=400px>
 
-<img src="CAP1.png" width=400px>
+<img src="cap1.png" width=400px>
 
-<img src="CAP2.png" width=400px>
+<img src="cap2.png" width=400px>
