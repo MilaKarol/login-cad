@@ -145,6 +145,30 @@ function editar(i) {
 }
 
 ````
+
+## Neste campo msotra como foi feito a máscara de CPF
+
+
+Para assegurar que o CPF seja exibido no formato correto (###.###.###-##), o código abaixo foi implementado. Ele utiliza um evento de input para aplicar a máscara enquanto o usuário digita o CPF.
+O código remove qualquer caractere que não seja número e, em seguida, formata a entrada adicionando pontos e hífen nos lugares apropriados.
+
+
+````
+
+// Aplicação de máscara no campo CPF
+document.getElementById('cpfUser').addEventListener('input', function (e) {
+    let cpf = e.target.value;
+    cpf = cpf.replace(/\D/g, ""); // Remove tudo que não for dígito
+    if (cpf.length <= 11) {
+        cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+        cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+        cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+    }
+    e.target.value = cpf;
+});
+
+````
+
 ## Neste campo mostra a exclusão de usuários
 
 A função excluir(i) é responsável por remover um usuário da tabela e das listas de dados.
